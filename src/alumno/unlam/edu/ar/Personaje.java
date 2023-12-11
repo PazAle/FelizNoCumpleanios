@@ -105,14 +105,22 @@ public class Personaje {
 	private void agrandarse() {
 		Double alturaActual = this.getAltura();
 		alturaActual += 0.40;
-		this.setAltura(alturaActual);
+		if(alturaActual >= 2.80) {
+			this.setAltura(2.80);
+		} else {
+			this.setAltura(alturaActual);
+		}
 		
 	}
 
 	private void encogerse() {
 		Double alturaActual = this.getAltura();
 		alturaActual -= 0.50;
-		this.setAltura(alturaActual);
+		if(alturaActual <= 0.50) {
+			this.setAltura(0.50);
+		} else {
+			this.setAltura(alturaActual);
+		}
 	}
 
 	private Integer tipoDeAlimento(Producto producto) {

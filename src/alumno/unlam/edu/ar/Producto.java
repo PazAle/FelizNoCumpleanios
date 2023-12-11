@@ -1,6 +1,6 @@
 package alumno.unlam.edu.ar;
 
-public class Producto {
+public class Producto implements Comparable<Producto>{
 
 	private String nombre;
 	private Double precio;
@@ -24,6 +24,19 @@ public class Producto {
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Producto [nombre=" + nombre + ", precio=" + precio + "]";
+	}
+
+	@Override
+	public int compareTo(Producto o) {
+		// TODO Auto-generated method stub
+		return this.getNombre().compareTo(o.getNombre());
 	}
 	
 	
