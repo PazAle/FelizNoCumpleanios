@@ -34,7 +34,7 @@ public class Supermercado {
 		
 	}
 
-	public Boolean venderProducto(Producto producto, Personaje personaje) {
+	public Boolean venderProducto(Producto producto, Personaje personaje) throws DineroInsuficienteException, ProductoNoRegistradoException {
 		Boolean existeProducto = productoRegistrado(producto);
 		Boolean sePudoVender = false;
 		if(existeProducto) {
@@ -42,7 +42,11 @@ public class Supermercado {
 				personaje.obtenerProducto(producto);
 				personaje.actualizarDinero(producto.getPrecio());
 				sePudoVender = true;
+			} else {
+				throw new DineroInsuficienteException("No tiene dinero suficiente para adquirir el producto");
 			}
+		} else {
+			throw new ProductoNoRegistradoException("El producto que intenta comprar, no está registrado");
 		}
 		return sePudoVender;
 	}
